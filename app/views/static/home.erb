@@ -1,0 +1,8 @@
+
+<h1>Home Page</h1>
+<h2>Listed Properties</h2>
+	<tr><% @properties.each do |prop| %></tr>
+		<p><a href="/property/<%= prop.id %>"><%= prop.description %></a></p>
+	<%end %>
+
+	<%= @error if @error %>

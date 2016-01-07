@@ -1,0 +1,60 @@
+<h1> Specific Property </h1> 
+
+<h2> <%= @spec_property.description %> <small>created by <%= @spec_property.user.email %> </small> </h2> 
+
+	<form>
+		<button type ='submit' formmethod="get" formaction="/property/<%= @spec_property.id%>/edit">Edit</button>   
+	</form>
+
+	<form action="/property/<%=@spec_property.id%>" method="post">
+		<input name="_method" type="hidden" value="delete" />
+			<button> Delete </button>
+	</form>
+
+<div id="spec_prop_comments">
+	<h2>Comments</h2>
+		<tr><% @property_comments.each do |prop_com| %></tr>
+			<ol> <li> <%= prop_com.description %> <small>submitted by <%= @spec_property.user.email %></small> </p>
+			<form>
+				<button type ='submit' formmethod="get" formaction="/comment/<%= prop_com.id%>/edit">Edit</button>   
+			</form>
+			<form action="/comment/<%=prop_com.id%>" method="post">
+			<input name="_method" type="hidden" value="delete" />
+			<button> Delete </button>
+		</li>
+		</ol>
+	</form>
+		
+		<% end %>
+</div>
+
+<div id="spec_prop_bookings">
+	<h2>Existing Bookings</h2>
+		<tr><% @property_bookings.each do |prop_book| %></tr>
+			<ol> <li> <%= prop_book.description %> <small>submitted by <%= prop_book.user.email %></small> </p>
+			<form>
+				<button type ='submit' formmethod="get" formaction="/booking/<%= prop_book.id%>/edit">Edit</button>   
+			</form>
+			<form action="/booking/<%=prop_book.id%>" method="post">
+			<input name="_method" type="hidden" value="delete" />
+			<button> Delete </button>
+		</li>
+		</ol>
+	</form>
+		
+		<% end %>
+</div>
+
+<div id="comment_form">
+	<form method='post' action="/property/<%= @spec_property.id %>/comments">
+	<input id ='answer_bar' placeholder='Please leave a comment!' name='comment'><br>
+	<input id = 'answer_button' type='submit' value = 'Write Comment'>
+	</form>
+</div>
+
+<div id="booking">
+	<form method='post' action="/property/<%= @spec_property.id %>/bookings">
+	<input id ='answer_bar' placeholder='Please write your preferred booking slot!' name='booking' type ='text'><br>
+	<input id = 'answer_button' type='submit' value = 'Write Booking'>
+	</form>
+</div>

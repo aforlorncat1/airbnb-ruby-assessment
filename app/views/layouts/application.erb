@@ -1,7 +1,30 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>AirBnB.nxt</title>
 	</head>
+
+	<header>
+		<h1>AirBnb.nxt</h1>
+
+		<div id="logout_button" class="nav_button">
+			<form action="/logout" method='post'>
+			<input type="submit" value="Logout">
+			</form>
+		</div>
+
+		<div id="profile_button" class="nav_button">
+			<form action="/property" method='get'>
+			<input type="submit" value="Profile">
+		</form>
+		</div>
+
+		<div id="home_button" class="nav_button">
+			<form action="/home" method='get'>
+			<input type="submit" value="Home">
+		</form>
+		</div>
+	</header>
+
 	<body>
 		<%= yield %>
 	</body>

@@ -1,0 +1,40 @@
+<h1> <%= current_user.email %> Profile</h1>
+
+<h2> User Properties </h2>
+
+<tr><% @user_properties.each do |prop| %></tr>
+	<p><a href="/property/<%=prop.id%>"><%= prop.description %></a>
+		<%if current_user %>
+		<form>
+			<button type ='submit' formmethod="get" formaction="/property/<%= prop.id%>/edit">Edit</button>   
+		</form>
+
+		 <form action="/property/<%=prop.id%>" method="post">
+			<input name="_method" type="hidden" value="delete" /><button> Delete </button>
+		</form>
+		<% end %></p>
+	<% end %>
+
+<h2> User Bookings </h2>
+
+<tr><% @user_bookings.each do |book| %></tr>
+	<p><%= book.description %><small>for <%= book.property.description %></small>
+		<%if current_user %>
+		<form>
+			<button type ='submit' formmethod="get" formaction="/booking/<%= book.id%>/edit">Edit</button>   
+		</form>
+
+		<form action="/booking/<%=book.id%>" method="post">
+			<input name="_method" type="hidden" value="delete" /><button> Delete </button>
+		</form>
+		<% end %></p>
+	<% end %>
+
+
+
+<h2>Input a new property</h2>
+
+	<form method='post' action=/property>
+		<input type ='text' placeholder='Input property description!' name='property[description]'><br>
+		<input type='submit' value='submit'>
+	</form>

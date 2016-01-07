@@ -1,0 +1,7 @@
+	<h1>Edit Booking</h1>
+
+<form action="/booking/<%= @booking.id%>" method="post">
+<input type="hidden" name="_method" value="patch">
+Booking: <input type="text" name="booking[description]" value="<%= @booking.description %>">
+<input type="submit" value="Change">
+</form>	

@@ -1,0 +1,7 @@
+	<h1>Edit Property</h1>
+
+<form action="/property/<%= @property.id%>/edit" method="post">
+<input type="hidden" name="_method" value="patch">
+Product: <input type="text" name="property[description]" value="<%= @property.description %>">
+<input type="submit" value="Change">
+</form>	
